@@ -17,10 +17,10 @@ class FW_Extension_Social_Facebook extends FW_Extension {
 	}
 
 	private function add_actions() {
-		add_action( 'fw_extension_settings_form_saved', array(
+		add_action( 'fw_extension_settings_form_saved:'. $this->get_parent()->get_name(), array(
 				$this,
 				'_action_fw_ext_social_facebook_save_options'
-			), 10, 2 );
+			), 10 );
 	}
 
 	private function add_filters() {
@@ -28,28 +28,23 @@ class FW_Extension_Social_Facebook extends FW_Extension {
 	}
 
 	/**
-	 * @param $extension_name
 	 * @param $options_before_save
 	 */
-	public function _action_fw_ext_social_facebook_save_options( $extension_name, $options_before_save ) {
+	public function _action_fw_ext_social_facebook_save_options( $options_before_save ) {
 		$parent = $this->get_parent()->get_name();
-
-		if ( $extension_name === $parent ) {
-
-			$response = wp_remote_get(
-				add_query_arg(
-					array(
-						'grant_type'    => 'client_credentials',
-						'client_id'     => fw_get_db_ext_settings_option( $parent, 'facebook-app-id' ),
-						'client_secret' => fw_get_db_ext_settings_option( $parent, 'facebook-app-secret' )
-					), 'https://graph.facebook.com/oauth/access_token' ) );
-			$body     = wp_remote_retrieve_body( $response );
-			if ( strpos( $body, 'access_token=' ) !== false ) {
-				$token = substr( $body, 13 );
-				fw_set_db_extension_data( $this->get_name(), $this->access_token_name, $token );
-			} else {
-				fw_set_db_extension_data( $this->get_name(), $this->access_token_name, false );
-			}
+		$response = wp_remote_get(
+			add_query_arg(
+				array(
+					'grant_type'    => 'client_credentials',
+					'client_id'     => fw_get_db_ext_settings_option( $parent, 'facebook-app-id' ),
+					'client_secret' => fw_get_db_ext_settings_option( $parent, 'facebook-app-secret' )
+				), 'https://graph.facebook.com/oauth/access_token' ) );
+		$body = wp_remote_retrieve_body( $response );
+		if ( strpos( $body, 'access_token=' ) !== false ) {
+			$token = substr( $body, 13 );
+			fw_set_db_extension_data( $this->get_name(), $this->access_token_name, $token );
+		} else {
+			fw_set_db_extension_data( $this->get_name(), $this->access_token_name, false );
 		}
 	}
 

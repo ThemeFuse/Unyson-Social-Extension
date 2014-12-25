@@ -5,7 +5,7 @@
 $manifest = array();
 
 $manifest['name']        = __( 'Social', 'fw' );
-$manifest['description'] = __( 'This extension offers the opportunity to work with social networks.', 'fw' );
+$manifest['description'] = __( 'Use this extension to configure all your social related APIs. Other extensions will use the Social extension to connect to your social accounts.', 'fw' );
 $manifest['version'] = '1.0.0';
 $manifest['display'] = true;
 $manifest['standalone'] = true;

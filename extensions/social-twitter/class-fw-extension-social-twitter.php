@@ -43,7 +43,7 @@ class FW_Extension_Social_Twitter extends FW_Extension {
 								'type'  => 'text',
 								'value' => '',
 								'label' => __( 'Consumer Secret', 'fw' ),
-								'desc'  => __( 'Enter Facebook App Secret.', 'fw' ),
+								'desc'  => __( 'Enter Twitter App Secret.', 'fw' ),
 							),
 							'twitter-access-token'        => array(
 								'type'  => 'text',

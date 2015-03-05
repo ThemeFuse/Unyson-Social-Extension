@@ -102,7 +102,7 @@ if ( ! class_exists( 'OAuthSignatureMethod' ) ) {
 		}
 	}
 }
-var_dump('OAuth');
+
 if ( ! class_exists( 'OAuthSignatureMethod_HMAC_SHA1' ) ) {
 	/**
 	 * The HMAC-SHA1 signature method uses the HMAC-SHA1 signature algorithm as defined in [RFC2104]

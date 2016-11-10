@@ -10,3 +10,8 @@ $manifest['version'] = '1.0.5';
 $manifest['display'] = true;
 $manifest['standalone'] = true;
 $manifest['github_update'] = 'ThemeFuse/Unyson-Social-Extension';
+
+$manifest['github_repo'] = 'https://github.com/ThemeFuse/Unyson-Social-Extension';
+$manifest['uri'] = 'http://manual.unyson.io/en/latest/extension/social/index.html#content';
+$manifest['author'] = 'ThemeFuse';
+$manifest['author_uri'] = 'http://themefuse.com/';

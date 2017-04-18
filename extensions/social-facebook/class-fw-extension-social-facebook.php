@@ -39,10 +39,10 @@ class FW_Extension_Social_Facebook extends FW_Extension {
 					'client_id'     => fw_get_db_ext_settings_option( $parent, 'facebook-app-id' ),
 					'client_secret' => fw_get_db_ext_settings_option( $parent, 'facebook-app-secret' )
 				), 'https://graph.facebook.com/oauth/access_token' ) );
-		$body = wp_remote_retrieve_body( $response );
-		if ( strpos( $body, 'access_token=' ) !== false ) {
-			$token = substr( $body, 13 );
-			fw_set_db_extension_data( $this->get_name(), $this->access_token_name, $token );
+		$body = json_decode( wp_remote_retrieve_body( $response ), true );
+
+		if ( isset( $body['access_token'] ) ) {
+			fw_set_db_extension_data( $this->get_name(), $this->access_token_name, $body['access_token'] );
 		} else {
 			fw_set_db_extension_data( $this->get_name(), $this->access_token_name, false );
 		}

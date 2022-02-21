@@ -14,7 +14,7 @@
  *
  * @return string
  */
-function fw_ext_social_facebook_graph_api_explorer( $method = 'GET', $node, $args, $token = false, $version = 'v2.2', $graph_url = 'https://graph.facebook.com' ) {
+function fw_ext_social_facebook_graph_api_explorer( $method = 'GET', $node = '', $args = array(), $token = false, $version = 'v2.2', $graph_url = 'https://graph.facebook.com' ) {
 	/* @var FW_Extension_Social_Facebook $facebook */
 	$facebook = fw()->extensions->get( 'social-facebook' );
 

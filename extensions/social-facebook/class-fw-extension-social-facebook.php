@@ -101,7 +101,7 @@ class FW_Extension_Social_Facebook extends FW_Extension {
 	 *
 	 * @return string
 	 */
-	public function graph_api_explorer( $method = 'GET', $node, $args, $token = false, $version = 'v2.2', $graph_url = 'https://graph.facebook.com' ) {
+	public function graph_api_explorer( $method = 'GET', $node = '', $args = array(), $token = false, $version = 'v2.2', $graph_url = 'https://graph.facebook.com' ) {
 
 		if ( ! $token ) {
 			$token = $this->get_access_token();
